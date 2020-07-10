@@ -6,9 +6,10 @@ angular.module('LunchCheck', [])
 
 LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
-	// Check if the textbox contains more than 3 comma seperated items
 	$scope.checkTooMuch = function () {
+		// Check if the textbox is empty
 		if ($scope.textbox) {
+			// Check if the number of items in the textbox is less than or equal to 3
 			var length = $scope.textbox.split(",").length;
 			if (length <= 3) {
 				$scope.message = "Enjoy!";
