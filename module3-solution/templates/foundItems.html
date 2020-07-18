@@ -1,0 +1,18 @@
+<table class="table narrow-list" ng-if="found.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Short Name</th>
+      <th scope="col">Desciption</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in found">
+      <td>{{ item.name }}</td>
+      <td>{{ item.short_name }}</td>
+      <td>{{ item.description }}</td>
+      <td><button class="btn btn-danger" ng-click="onRemove({index: $index});">Don't want this one!</button></td>
+    </tr>
+  </tbody>
+</table>
