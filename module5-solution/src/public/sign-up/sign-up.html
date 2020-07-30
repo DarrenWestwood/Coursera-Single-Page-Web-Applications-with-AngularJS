@@ -1,0 +1,90 @@
+<div class="container">
+  <h2 id="menu-signup-title" class="text-center">Sign Up</h2>
+  <div class="text-center">
+  	<fieldset>
+      <form name='regForm' novalidate>
+
+        <div>
+	        <input type="text" name="first_name" placeholder="First name"
+	          ng-model="signUpCtrl.user.first_name"
+	          required
+	          minlength="4"
+	          ng-maxlength="10">
+	          <div
+	          	class="warning"
+	            ng-if="(regForm.first_name.$error.minlength || regForm.first_name.$error.required) && regForm.first_name.$touched">
+	            First name must be at least 4 characters long
+	          </div>
+	          <div 
+	          	class="warning"
+	          	ng-if="regForm.first_name.$error.maxlength && regForm.first_name.$touched">
+	            First name must not be longer than 10 characters
+	          </div>
+        </div>
+        
+        <div>
+	        <input type="text" name="last_name" placeholder="Last name"
+	          ng-model="signUpCtrl.user.last_name"
+	          required
+	          minlength="4"
+	          ng-maxlength="10">
+	          <div
+	          	class="warning"
+	            ng-if="(regForm.last_name.$error.minlength || regForm.last_name.$error.required) && regForm.last_name.$touched">
+	            Last name must be at least 4 characters long
+	          </div>
+	          <div
+	          	class="warning" 
+	          	ng-if="regForm.last_name.$error.maxlength && regForm.last_name.$touched">
+	            Last name must not be longer than 10 characters
+	          </div>
+        </div>
+
+        <div>
+	        <input type="email" name="email" placeholder="Email"
+	          ng-model="signUpCtrl.user.email"
+	          required>
+	          <div
+	          	class="warning" 
+	          	ng-if="regForm.email.$invalid && regForm.email.$touched">
+	            Must be a valid email address: handle@domain format
+	          </div>
+        </div>
+
+        <div>
+        	<input type="text" name="phone" placeholder="Phone"
+	          ng-model="signUpCtrl.user.phone"
+	          pattern="(\d{3})-(\d{3})-(\d{4})">
+	          <div
+	          	class="warning" 
+	          	ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+	            Phone must be in the format ###-###-####.
+	          </div>
+        </div>
+
+        <div>
+        	<input type="text" name="favourite" placeholder="Favourite menu item"
+        	  ng-model="signUpCtrl.user.short_name"
+        	  >
+		    <div id="info" class="warning" ng-if="signUpCtrl.error">
+		      No such menu number exists. eg. A1
+		    </div>
+        </div>
+
+        <button
+          class="btn btn-lg btn-default"
+          ng-disabled="regForm.$invalid"
+          ng-click="signUpCtrl.submitForm()">Sign Up</button>
+      </form>
+    </fieldset>
+
+    <div id="info" ng-if="signUpCtrl.completed">
+      Your information has been saved
+    </div>
+
+  </div>
+  <!-- <menu-category ng-repeat="menuCategory in menuCtrl.menuCategories"
+                 category="menuCategory">
+  </menu-category> -->
+
+</div>
